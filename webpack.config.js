@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var webpackConfig = {
     resolve: {
@@ -17,6 +19,7 @@ var webpackConfig = {
     },
     module: {
         loaders: [
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') },
             { test: /\.css$/, loader: 'style!css' },
             {
                 test: /\.(js|jsx)$/,
