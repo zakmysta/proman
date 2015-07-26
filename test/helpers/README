@@ -1,0 +1,3 @@
+*helpers directory is setup so that any test libraries accomodating our spec setup (everything in the test/ directory) can have definitions. I generated a few globals based on a tutorial assertions and more for chai.js. All specs should be rooted in the test directory.
+
+-OsciMo
