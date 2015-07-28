@@ -6,6 +6,7 @@
  */
 
 import express from 'express';
+import models from './models'
 import compression from 'compression';
 import path from 'path';
 import serialize from 'serialize-javascript';
@@ -59,7 +60,13 @@ server.use((req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-server.listen(port);
-console.log('Application listening on port ' + port);
+
+models.sequelize.authenticate().then(function(err) {
+    console.log('Connection has been established successfully.');
+    server.listen(port);
+    console.log('Application listening on port ' + port);
+  }, function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 export default server;
